@@ -12,6 +12,7 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
+    'no-undef': 'off',
     'no-empty': 'warn',
     'no-empty-pattern': 'warn',
     'no-case-declarations': 'off',

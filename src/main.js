@@ -1,15 +1,15 @@
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import ViewUIPlus from 'view-ui-plus';
+import App from '@/App.vue';
+import router from '@/router';
+import 'view-ui-plus/dist/styles/viewuiplus.css';
+import 'uno.css';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+const app = createApp(App);
 
-import App from '@/App.vue'
-import router from '@/router'
+app.use(createPinia());
+app.use(router);
+app.use(ViewUIPlus);
 
-import 'uno.css'
-
-const app = createApp(App)
-
-app.use(createPinia())
-app.use(router)
-
-app.mount('#app')
+app.mount('#app');
