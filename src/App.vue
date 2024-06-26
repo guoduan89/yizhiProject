@@ -7,8 +7,13 @@ import Footer from '@/components/Footer.vue';
 
 <template>
   <Header />
-  <RouterView />
+    <div class="body"><RouterView /></div>
   <Footer />
 </template>
 
-<style scoped></style>
+<style scoped>
+.body{
+  background-color: rgb(246 247 249);
+  padding: 10px;
+}
+</style>

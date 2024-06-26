@@ -1,6 +1,6 @@
 <template>
     <div class="bg">
-        <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="120">
+        <Form  ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="120">
             <FormItem label="作品名称" prop="name">
             <Input style="width: 575px" v-model="formValidate.name" placeholder="请输入作品名称" />
             </FormItem>
@@ -49,8 +49,9 @@
             </FormItem>
             <FormItem>
             <Button style="width: 300px" type="primary" @click="handleSubmit('formValidate')"
-                >下一步</Button
-            >
+                >下一步
+            </Button>
+            
             </FormItem>
         </Form>
         </div>
@@ -105,16 +106,15 @@
     </script>
     <style scoped lang="scss">
     .bg {
-        position: relative;
-        left: 350px;
-    
+        margin: 0 auto;
         width: 700px;
         height: 900px;
-        background-color: rgb(255 255 245);
+        background-color: white;
         padding-top: 40px;
         Form {
         font-size: 14px;
         line-height: 0%;
         }
+        .ivu-btn{margin-left: 90px}
     }
 </style>

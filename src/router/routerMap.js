@@ -12,11 +12,11 @@ const routerMap = [
         name: 'guide',
         component: import('@/views/Guide/index.vue'),
       },
-      {
-        path: 'body',
-        name: 'body',
-        component: import('@/views/Login/components/Body.vue'),
-      },
+      // {
+      //   path: 'body',
+      //   name: 'body',
+      //   component: import('@/views/Login/components/Body.vue'),
+      // },
       {
         path:'signUpWork',
         name:'signUpWork',
@@ -30,7 +30,7 @@ const routerMap = [
           { 
             path:'Upload',
             name:'Upload',
-            component:import('@/views/signUpWork/components/Upload.vue')
+            component:import('@/views/signUpWork/components/UpLoad.vue')
           },
         ]
       }

@@ -291,7 +291,7 @@ body{
   flex-direction: column;
   width: 100%;
   margin-top: 50px;
-  background-color: #e0e0e073;
+  background-color: rgb(246 247 249);
   padding-bottom:  20px;
   .dec {
     display: flex;

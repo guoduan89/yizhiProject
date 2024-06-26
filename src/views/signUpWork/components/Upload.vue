@@ -131,9 +131,9 @@ onMounted(async () => {
             </div>
 
             <div class="buttons">
-                <button>上一步</button>
-                <button>保存</button>
-                <button>提交</button>
+                <Button type="primary">上一步</Button>
+                <Button type="primary">保存</Button>
+                <Button type="primary">提交</Button>
             </div>
             
         
@@ -143,9 +143,7 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .bg{
-        width: 1000px;
         margin: 0 auto;
-        padding: 20px 0px;
         background-color:#dddddd65;
         .container{
             width: 800px;
@@ -270,5 +268,8 @@ onMounted(async () => {
         justify-content: center;
         align-items: center;
         margin-top: 20px;
-}
+        .ivu-btn{
+            margin: 10px
+        }
+    }
 </style>

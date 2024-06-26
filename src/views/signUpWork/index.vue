@@ -6,12 +6,16 @@ export default {
 
 <script setup lang="jsx">
 import { ref, toRefs, computed, watch, onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
-const props = defineProps([]);
-const emit = defineEmits([]);
+const router = useRouter();
 
-const {} = toRefs(props);
-
+const getFill = ()=>{
+  router.push('/signUpWork/fill')
+}
+const getUpLoad = ()=>{
+  router.push('/signUpWork/upload')
+}
 onMounted(async () => {
 
 });
@@ -20,15 +24,17 @@ onMounted(async () => {
 <template>
   <div class="container">
     <div class="title">
-      <div class="workInfo active">填写作品信息</div>
-      <div class="workUpload active">上传参赛作品</div>
+      <div @click="getFill" class="workInfo active">填写作品信息</div>
+      <div @click="getUpLoad" class="workUpload">上传参赛作品</div>
     </div>
+    <RouterView/>
   </div>
   
-  <RouterView/>
+  
 </template>
 
 <style scoped lang="scss">
+
 .container{
             width: 800px;
             margin: 0 auto;
@@ -36,6 +42,7 @@ onMounted(async () => {
             background-color: white;
             .title{
               display: flex;
+              cursor:pointer;
               .workInfo,.workUpload{
                   display: flex;
                   background-color: #ddd;

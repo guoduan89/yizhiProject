@@ -15,6 +15,9 @@ const getBody = () => {
 const getGuide = () => {
   router.push({ name: 'guide' });
 };
+const getSignUpWork= () =>{
+  router.push('/signUpWork/Fill')
+}
 
 onMounted(async () => {
   // getBody();
@@ -27,26 +30,26 @@ onMounted(async () => {
     <ul id="list">
       <li @click="getBody"><a href="">首页</a></li>
       <li @click="getGuide"><a href="">比赛指南</a></li>
-      <li><a href="">我要报名</a></li>
+      <li @click="getSignUpWork"><a href="">我要报名</a></li>
       <li><a href="">进入专家评审</a></li>
     </ul>
     <button>登录</button>
     <!-- <div class="user">
-      <img src="../../../assets/img/PC端_slices/组 1@2x.png" alt="" />
+      <img src="../assets/img/PC端_slices/组 1@2x.png" alt="" />
       <div class="name">
         <a href="">胡志新</a>
         <ul class="dropdown">
           <li>
-            <img src="../../../assets/img/PC端_slices/矢量智能对象@2x(3).png" alt="" />退出登录
+            <img src="../assets/img/PC端_slices/矢量智能对象@2x(3).png" alt="" />退出登录
           </li>
           <li>
-            <img src="../../../assets/img/PC端_slices/矢量智能对象@2x(4).png" alt="" />修改密码
+            <img src="../assets/img/PC端_slices/矢量智能对象@2x(4).png" alt="" />修改密码
           </li>
         </ul>
       </div>
       <img
         style="height: 5px"
-        src="../../../assets/img/PC端_slices/矢量智能对象 拷贝 9@2x.png"
+        src="../assets/img/PC端_slices/矢量智能对象 拷贝 9@2x.png"
         alt=""
       />
     </div> -->
