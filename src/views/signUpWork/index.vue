@@ -9,13 +9,17 @@ import { ref, toRefs, computed, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const router = useRouter();
+const activeTab = ref('fill'); // 默认选中的标签
 
-const getFill = ()=>{
-  router.push('/signUpWork/fill')
-}
-const getUpLoad = ()=>{
-  router.push('/signUpWork/upload')
-}
+const selectTab = (tab) => {
+  activeTab.value = tab;
+  if (tab === 'fill') {
+    router.push('/signUpWork/fill');
+  } else if (tab === 'upload') {
+    router.push('/signUpWork/upload');
+  }
+};
+
 onMounted(async () => {
 
 });
@@ -24,8 +28,8 @@ onMounted(async () => {
 <template>
   <div class="container">
     <div class="title">
-      <div @click="getFill" class="workInfo active">填写作品信息</div>
-      <div @click="getUpLoad" class="workUpload">上传参赛作品</div>
+      <div @click="selectTab('fill')" :class="{'workInfo': true, 'active': activeTab === 'fill'}">填写作品信息</div>
+      <div @click="selectTab('upload')" :class="{'workUpload': true, 'active': activeTab === 'upload'}">上传参赛作品</div>
     </div>
     <RouterView/>
   </div>
