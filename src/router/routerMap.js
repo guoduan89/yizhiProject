@@ -22,17 +22,17 @@ const routerMap = [
         name: 'signUpWork',
         component: () => import('@/views/signUpWork/index.vue'),
         children: [
-          { 
+          {
             path: 'Fill',
             name: 'Fill',
-            component: () => import('@/views/signUpWork/components/Fill.vue')
+            component: () => import('@/views/signUpWork/components/Fill.vue'),
           },
-          { 
+          {
             path: 'Upload',
             name: 'Upload',
-            component: () => import('@/views/signUpWork/components/UpLoad.vue')
+            component: () => import('@/views/signUpWork/components/Upload.vue'),
           },
-        ]
+        ],
       },
       {
         path: 'Review',
@@ -41,14 +41,14 @@ const routerMap = [
         children: [
           {
             path: '',
-            component: () => import('@/views/Review/components/Strat.vue')
+            component: () => import('@/views/Review/components/Strat.vue'),
           },
           {
             path: 'Score',
-            component: () => import('@/views/Review/components/Score.vue')
-          }
-        ]
-      }
+            component: () => import('@/views/Review/components/Score.vue'),
+          },
+        ],
+      },
     ],
   },
 ];
