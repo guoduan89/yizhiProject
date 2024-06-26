@@ -61,7 +61,7 @@ onMounted(async () => {});
         <Input v-model="loginFormData.username" placeholder="请输入用户名" />
       </FormItem>
       <FormItem label="密码" prop="password">
-        <Input v-model="loginFormData.password" placeholder="请输入密码" />
+        <Input v-model="loginFormData.password" type="password" password placeholder="请输入密码" />
       </FormItem>
     </Form>
 

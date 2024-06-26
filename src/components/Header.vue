@@ -9,16 +9,28 @@ import DialogLogin from './DialogLogin.vue';
 const isShowDialogLogin = ref(true);
 
 const router = useRouter();
-const getBody = () => {
-  router.push({ name: 'home' });
-};
-const getGuide = () => {
-  router.push({ name: 'guide' });
-};
-const getSignUpWork= () =>{
-  router.push('/signUpWork/Fill')
-}
+// const getBody = () => {
+//   router.push({ name: 'home' });
+// };
+// const getGuide = () => {
+//   router.push({ name: 'guide' });
+// };
+// const getSignUpWork= () =>{
+//   router.push('/signUpWork/Fill')
+// }
 
+//会刷新
+const activeTab = ref('home'); // 默认选中的标签
+const selectTab = (tab) => {
+  activeTab.value = tab;
+  if (tab === 'home') {
+    router.push({ name: 'home' });
+  } else if (tab === 'guide') {
+    router.push({ name: 'guide' });
+  }else if (tab === 'fill') {
+    router.push('/signUpWork/Fill')
+  }
+};
 onMounted(async () => {
   // getBody();
 });
@@ -28,9 +40,9 @@ onMounted(async () => {
   <div class="nav">
     <div class="navtitle">某市职业学校教学能力大赛</div>
     <ul id="list">
-      <li @click="getBody"><a href="">首页</a></li>
-      <li @click="getGuide"><a href="">比赛指南</a></li>
-      <li @click="getSignUpWork"><a href="">我要报名</a></li>
+      <li @click="selectTab('home')" :class="{'active': activeTab === 'home'}"><a href="">首页</a></li>
+      <li @click="selectTab('guide')" :class="{'active': activeTab === 'guide'}"><a href="">比赛指南</a></li>
+      <li @click="selectTab('fill')" :class="{'active': activeTab === 'fill'}"><a href="">我要报名</a></li>
       <li><a href="">进入专家评审</a></li>
     </ul>
     <button>登录</button>
@@ -79,30 +91,46 @@ $color: #436eff;
     justify-content: center; /* 水平居中对齐 */
     align-items: center; /* 垂直居中对齐 */
     margin-right: 400px; /* 修改为固定像素值 */
+    .active{
+      background-color: #e0e0e0; /* 鼠标悬停时背景颜色变深 */
 
+      a {
+        color: $color; /* 鼠标悬停时字体变蓝色 */
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px; /* 横线高度 */
+        background-color: $color; /* 横线颜色 */
+      }
+      }
     li {
       list-style: none;
       line-height: 50px;
       padding: 0 20px;
       position: relative; /* 添加相对定位 */
 
-      &:hover {
-        background-color: #e0e0e0; /* 鼠标悬停时背景颜色变深 */
+      // &:hover {
+      //   background-color: #e0e0e0; /* 鼠标悬停时背景颜色变深 */
 
-        a {
-          color: $color; /* 鼠标悬停时字体变蓝色 */
-        }
+      //   a {
+      //     color: $color; /* 鼠标悬停时字体变蓝色 */
+      //   }
 
-        &::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 2px; /* 横线高度 */
-          background-color: $color; /* 横线颜色 */
-        }
-      }
+      //   &::after {
+      //     content: '';
+      //     position: absolute;
+      //     top: 0;
+      //     left: 0;
+      //     width: 100%;
+      //     height: 2px; /* 横线高度 */
+      //     background-color: $color; /* 横线颜色 */
+      //   }
+      // }
 
       a {
         text-decoration: none;

@@ -12,11 +12,10 @@ onMounted(async () => {});
 
 <template>
   <div class="banner">
-        <img src="../../assets/img/PC端_slices/组 2.png" alt=""/>
-        <div class="title">2023某市职业学校教学能力大赛</div>
-        <div class="sign-up">我要报名<img src="../../assets/img/PC端_slices/矢量智能对象 拷贝@2x.png" alt=""/></div>
-        
-    </div>
+    <img src="../../assets/img/PC端_slices/组 2.png" alt=""/>
+    <div class="title">2023某市职业学校教学能力大赛</div>
+    <div class="sign-up">我要报名<img src="../../assets/img/PC端_slices/矢量智能对象 拷贝@2x.png" alt=""/></div>
+  </div>
 
     <div class="body">
         <div class="dec">

@@ -19,7 +19,6 @@ const selectTab = (tab) => {
     router.push('/signUpWork/upload');
   }
 };
-
 onMounted(async () => {
 
 });

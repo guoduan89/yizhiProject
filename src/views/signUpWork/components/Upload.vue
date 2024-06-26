@@ -14,10 +14,6 @@ onMounted(async () => {
 <template>
     <div class="bg">
         <div class="container">
-            <!-- <div class="title">
-                <div class="workInfo">填写作品信息</div>
-                <div class="workUpload active">上传参赛作品</div>
-            </div> -->
             <div class="content">
                 <div class="row">
                     <div class="left">课堂实录</div>

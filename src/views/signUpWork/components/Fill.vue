@@ -26,7 +26,7 @@
             </FormItem>
     
             <FormItem label="参赛教学团队资格" prop="interest"
-            ><br />
+            >
             <CheckboxGroup v-model="formValidate.interest">
                 <Checkbox
                 label="1、团队每个成员教龄3年以上，近3年实际承担参赛课程或相关课程教学任务;"
