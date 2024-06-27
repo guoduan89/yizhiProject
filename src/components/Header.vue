@@ -66,8 +66,7 @@ onMounted(async () => {
       />
     </div> -->
   </div>
-
-  <DialogLogin v-model="isShowDialogLogin" />
+  <!-- <DialogLogin v-model="isShowDialogLogin" /> -->
 </template>
 
 <style scoped lang="scss">
