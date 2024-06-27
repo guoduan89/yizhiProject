@@ -6,7 +6,7 @@ import { useRoute, useRouter } from 'vue-router';
 
 import DialogLogin from './DialogLogin.vue';
 
-const isShowDialogLogin = ref(true);
+const isShowDialogLogin = ref(false);
 
 const router = useRouter();
 // const getBody = () => {
@@ -27,8 +27,8 @@ const selectTab = (tab) => {
     router.push({ name: 'home' });
   } else if (tab === 'guide') {
     router.push({ name: 'guide' });
-  }else if (tab === 'fill') {
-    router.push('/signUpWork/Fill')
+  } else if (tab === 'fill') {
+    router.push('/signUpWork/Fill');
   }
 };
 onMounted(async () => {
@@ -40,12 +40,26 @@ onMounted(async () => {
   <div class="nav">
     <div class="navtitle">某市职业学校教学能力大赛</div>
     <ul id="list">
-      <li @click="selectTab('home')" :class="{'active': activeTab === 'home'}"><a href="">首页</a></li>
-      <li @click="selectTab('guide')" :class="{'active': activeTab === 'guide'}"><a href="">比赛指南</a></li>
-      <li @click="selectTab('fill')" :class="{'active': activeTab === 'fill'}"><a href="">我要报名</a></li>
+      <li @click="selectTab('home')" :class="{ active: activeTab === 'home' }">
+        <a href="">首页</a>
+      </li>
+      <li @click="selectTab('guide')" :class="{ active: activeTab === 'guide' }">
+        <a href="">比赛指南</a>
+      </li>
+      <li @click="selectTab('fill')" :class="{ active: activeTab === 'fill' }">
+        <a href="">我要报名</a>
+      </li>
       <li><a href="">进入专家评审</a></li>
     </ul>
-    <button>登录</button>
+    <button
+      @click="
+        () => {
+          isShowDialogLogin = true;
+        }
+      "
+    >
+      登录
+    </button>
     <!-- <div class="user">
       <img src="../assets/img/PC端_slices/组 1@2x.png" alt="" />
       <div class="name">
@@ -90,7 +104,7 @@ $color: #436eff;
     justify-content: center; /* 水平居中对齐 */
     align-items: center; /* 垂直居中对齐 */
     margin-right: 400px; /* 修改为固定像素值 */
-    .active{
+    .active {
       background-color: #e0e0e0; /* 鼠标悬停时背景颜色变深 */
 
       a {
@@ -106,7 +120,7 @@ $color: #436eff;
         height: 2px; /* 横线高度 */
         background-color: $color; /* 横线颜色 */
       }
-      }
+    }
     li {
       list-style: none;
       line-height: 50px;

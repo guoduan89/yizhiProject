@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script setup lang="jsx">
-import { Message } from 'view-ui-plus';
+import { Message, Button } from 'view-ui-plus';
 import { ref, toRefs, computed, watch, onMounted } from 'vue';
 
 const props = defineProps({
@@ -38,24 +38,32 @@ async function close() {
   visible.value = false;
 }
 async function loginHandle() {
-  console.log(`loginHandle: `);
   const res = await fromRef.value?.validate();
   console.log(`res: `, res);
   if (res) {
-    // this.$Message.success('登录成功');
-    // Message;
+    const data = await userServices.login(loginFormData.value);
+    console.log('data:', data);
+    Message.success('登录成功');
+    close();
   } else {
-    // this.$Message.error('表单验证失败');
+    // Message.error('表单验证失败');
   }
 }
-
-console.log(`$attrs: `, useAttrs());
+const visibleChange = (val) => {
+  visible.value = val;
+};
 
 onMounted(async () => {});
 </script>
 
 <template>
-  <Modal v-bind="$attrs" title="登录" :modelValue="visible">
+  <Modal
+    v-bind="$attrs"
+    title="登录"
+    :modelValue="visible"
+    @on-visible-change="visibleChange"
+    :mask-closable="false"
+  >
     <Form ref="fromRef" :model="loginFormData" :rules="loginFormRules" :label-width="80">
       <FormItem label="用户名" prop="username">
         <Input v-model="loginFormData.username" placeholder="请输入用户名" />
