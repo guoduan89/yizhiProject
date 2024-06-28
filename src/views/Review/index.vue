@@ -21,6 +21,6 @@ onMounted(async () => {
   <RouterView/>
 </template>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 
 </style>

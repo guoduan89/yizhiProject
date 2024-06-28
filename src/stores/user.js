@@ -5,6 +5,7 @@ export const useUserStore = defineStore('user', () => {
   const userData = ref(null);
   const userRoles = ref(null);
   const userPermissions = ref(null);
+  const userDsUser = ref(null);
 
   async function updateUserInfo() {
     const data = await userServices.getInfo();
@@ -15,6 +16,13 @@ export const useUserStore = defineStore('user', () => {
     userData.value = data.user;
     userRoles.value = data.roles;
     userPermissions.value = data.permissions;
+    userDsUser.value = data.dsUser;
+  }
+
+  async function changeUserInfo({}) {
+    const data = await userServices.changeInfo({});
+    console.log(`changeUserInfo: `, data);
+    if(data.code !== 200) return;
   }
 
   async function logout() {
@@ -26,5 +34,5 @@ export const useUserStore = defineStore('user', () => {
   }
 
 
-  return {userData, userRoles, userPermissions, updateUserInfo ,logout};
+  return {userData, userRoles, userPermissions, updateUserInfo ,changeUserInfo,logout};
 });

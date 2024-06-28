@@ -33,12 +33,12 @@
     margin: 20px auto;
     padding: 20px 30px;
 ;
-    h2{
+    .h2{
         margin: 0 auto;
         text-align: center;
         height: auto;
     }
-    h3{
+    .h3{
         margin: 10px 0;
         height: auto;
     }

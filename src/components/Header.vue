@@ -6,8 +6,10 @@ import {  useRouter } from 'vue-router';
 import { Avatar, Select, Option, Poptip, Icon } from 'view-ui-plus';
 
 import DialogLogin from './DialogLogin.vue';
+import ChangePassword from './ChangePassword.vue';
 
 const isShowDialogLogin = ref(false);
+const isChangePassword = ref(false);
 
 const { userData, logout } = toRefs(useUserStore());
 const router = useRouter();
@@ -28,10 +30,6 @@ const selectTab = (tab) => {
   }
 };
 
-async function test(){
-  const res =  await userServices.ChangePassword()
-  console.log(res);
-}
 
 onMounted(async () => {
   // getBody();
@@ -43,17 +41,17 @@ onMounted(async () => {
     <div class="flex items-center gap-x-22">
       <div class="navtitle flex-shrink-0">某市职业学校教学能力大赛</div>
       <ul id="list">
-        <li @click="selectTab('home')" :class="{ active: activeTab === 'home' }">
-          <span>首页</span>
+        <li class="nav-li" @click="selectTab('home')" :class="{ active: activeTab === 'home' }">
+          <span class="nav-item">首页</span>
         </li>
-        <li @click="selectTab('guide')" :class="{ active: activeTab === 'guide' }">
-          <span>比赛指南</span>
+        <li class="nav-li" @click="selectTab('guide')" :class="{ active: activeTab === 'guide' }">
+          <span class="nav-item">比赛指南</span>
         </li>
-        <li @click="selectTab('fill')" :class="{ active: activeTab === 'fill' }">
-          <span>我要报名</span>
+        <li class="nav-li" @click="selectTab('fill')" :class="{ active: activeTab === 'fill' }">
+          <span class="nav-item">我要报名</span>
         </li>
-        <li @click="selectTab('review')" :class="{ active: activeTab === 'review' }">
-          <span>进入专家评审</span>
+        <li class="nav-li" @click="selectTab('review')" :class="{ active: activeTab === 'review' }">
+          <span class="nav-item">进入专家评审</span>
         </li>
       </ul>
     </div>
@@ -63,10 +61,10 @@ onMounted(async () => {
       <div class="name">
         <a href="">{{ userData.userName }}</a>
         <ul class="dropdown">
-          <li>
+          <li class="dropdown-item">
             <img src="../assets/img/PC端_slices/矢量智能对象@2x(3).png" alt="" /><div @click="logout">退出登录</div>
           </li>
-          <li>
+          <li class="dropdown-item" @click="() => {isChangePassword = true;}">
             <img src="../assets/img/PC端_slices/矢量智能对象@2x(4).png" alt="" />修改密码
           </li>
         </ul>
@@ -108,8 +106,9 @@ onMounted(async () => {
       />
     </div> -->
   </div>
-  <button @click="test">测试</button>
+
   <DialogLogin v-model="isShowDialogLogin" />
+  <ChangePassword v-model="isChangePassword"/>
 </template>
 
 <style scoped lang="scss">
@@ -127,7 +126,7 @@ $color: #436eff;
     color: $color;
   }
 
-  ul {
+  #list {
     display: flex;
     justify-content: center; /* 水平居中对齐 */
     align-items: center; /* 垂直居中对齐 */
@@ -148,7 +147,7 @@ $color: #436eff;
         background-color: $color; /* 横线颜色 */
       }
     }
-    li {
+    .nav-li {
       flex-shrink: 0;
       cursor: pointer;
       list-style: none;
@@ -174,7 +173,7 @@ $color: #436eff;
       //   }
       // }
 
-      span {
+      .nav-item {
         text-decoration: none;
         color: black;
         font-size: 14px;
@@ -223,7 +222,7 @@ $color: #436eff;
         padding-left: 0;
         font-size: 14px;
         opacity: 0;
-        li {
+        .dropdown-item {
           display: flex;
           justify-content: center;
           align-items: center;
