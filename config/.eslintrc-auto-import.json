@@ -83,6 +83,7 @@
     "watchEffect": true,
     "watchPostEffect": true,
     "watchSyncEffect": true,
-    "userServices": true
+    "userServices": true,
+    "useUserStore": true
   }
 }

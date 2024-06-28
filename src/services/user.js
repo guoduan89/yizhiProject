@@ -1,3 +1,4 @@
+
 import { http } from '@/http';
 
 export const userServices = {
@@ -7,4 +8,7 @@ export const userServices = {
   async getInfo() {
     return http.get('/getInfo');
   },
-};
+  async ChangePassword(data) {
+    return http.post('/biz/user/edit', data);
+  },
+}

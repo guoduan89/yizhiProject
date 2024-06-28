@@ -6,8 +6,8 @@ export default {
 
 <script setup lang="jsx">
 import { Message, Button } from 'view-ui-plus';
-import { ref, toRefs, computed, watch, onMounted } from 'vue';
-
+import { ref, toRefs, computed, onMounted } from 'vue';
+//
 const props = defineProps({
   modelValue: {
     type: Boolean,
@@ -37,20 +37,33 @@ const loginFormRules = ref({
 async function close() {
   visible.value = false;
 }
+
+const userStore = useUserStore()
 async function loginHandle() {
   const res = await fromRef.value?.validate();
-  console.log(`res: `, res);
   if (res) {
-    const data = await userServices.login(loginFormData.value);
-    console.log('data:', data);
-    Message.success('登录成功');
-    close();
-  } else {
-    // Message.error('表单验证失败');
+    const { code, token, msg } = await userServices.login(loginFormData.value);
+    if (code === 200) {
+      userStore.updateUserInfo()
+      localStorage.setItem('token', token);
+      Message.success('登录成功');
+      close();
+    } else {
+      Message.error(msg);
+    }
   }
 }
+
 const visibleChange = (val) => {
   visible.value = val;
+
+  if (val) {
+    loginFormData.value = {
+      username: '',
+      password: '',
+    };
+    fromRef.value?.resetFields();
+  }
 };
 
 onMounted(async () => {});
@@ -81,8 +94,3 @@ onMounted(async () => {});
     </template>
   </Modal>
 </template>
-
-<style scoped lang="scss">
-.DialogLogin {
-}
-</style>

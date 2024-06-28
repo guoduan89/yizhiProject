@@ -2,24 +2,18 @@
 
 <script setup lang="js">
 import { ref, toRefs, computed, watch, onMounted } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import {  useRouter } from 'vue-router';
+import { Avatar, Select, Option, Poptip, Icon } from 'view-ui-plus';
 
 import DialogLogin from './DialogLogin.vue';
 
 const isShowDialogLogin = ref(false);
 
+const { userData, logout } = toRefs(useUserStore());
 const router = useRouter();
-// const getBody = () => {
-//   router.push({ name: 'home' });
-// };
-// const getGuide = () => {
-//   router.push({ name: 'guide' });
-// };
-// const getSignUpWork= () =>{
-//   router.push('/signUpWork/Fill')
-// }
 
-//会刷新
+
+
 const activeTab = ref('home'); // 默认选中的标签
 const selectTab = (tab) => {
   activeTab.value = tab;
@@ -29,29 +23,63 @@ const selectTab = (tab) => {
     router.push({ name: 'guide' });
   } else if (tab === 'fill') {
     router.push('/signUpWork/Fill');
+  }else if (tab === 'review') {
+    router.push('/Review');
   }
 };
+
+async function test(){
+  const res =  await userServices.ChangePassword()
+  console.log(res);
+}
+
 onMounted(async () => {
   // getBody();
 });
 </script>
 
 <template>
-  <div class="nav">
-    <div class="navtitle">某市职业学校教学能力大赛</div>
-    <ul id="list">
-      <li @click="selectTab('home')" :class="{ active: activeTab === 'home' }">
-        <a href="">首页</a>
-      </li>
-      <li @click="selectTab('guide')" :class="{ active: activeTab === 'guide' }">
-        <a href="">比赛指南</a>
-      </li>
-      <li @click="selectTab('fill')" :class="{ active: activeTab === 'fill' }">
-        <a href="">我要报名</a>
-      </li>
-      <li><a href="">进入专家评审</a></li>
-    </ul>
+  <div class="nav px-200">
+    <div class="flex items-center gap-x-22">
+      <div class="navtitle flex-shrink-0">某市职业学校教学能力大赛</div>
+      <ul id="list">
+        <li @click="selectTab('home')" :class="{ active: activeTab === 'home' }">
+          <span>首页</span>
+        </li>
+        <li @click="selectTab('guide')" :class="{ active: activeTab === 'guide' }">
+          <span>比赛指南</span>
+        </li>
+        <li @click="selectTab('fill')" :class="{ active: activeTab === 'fill' }">
+          <span>我要报名</span>
+        </li>
+        <li @click="selectTab('review')" :class="{ active: activeTab === 'review' }">
+          <span>进入专家评审</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="user" v-if="userData">
+      <img src="../assets/img/PC端_slices/组 1@2x.png" alt="" />
+      <div class="name">
+        <a href="">{{ userData.userName }}</a>
+        <ul class="dropdown">
+          <li>
+            <img src="../assets/img/PC端_slices/矢量智能对象@2x(3).png" alt="" /><div @click="logout">退出登录</div>
+          </li>
+          <li>
+            <img src="../assets/img/PC端_slices/矢量智能对象@2x(4).png" alt="" />修改密码
+          </li>
+        </ul>
+      </div>
+      <img
+        style="height: 5px"
+        src="../assets/img/PC端_slices/矢量智能对象 拷贝 9@2x.png"
+        alt=""
+      />
+    </div>
+
     <button
+      v-else
       @click="
         () => {
           isShowDialogLogin = true;
@@ -80,7 +108,8 @@ onMounted(async () => {
       />
     </div> -->
   </div>
-  <!-- <DialogLogin v-model="isShowDialogLogin" /> -->
+  <button @click="test">测试</button>
+  <DialogLogin v-model="isShowDialogLogin" />
 </template>
 
 <style scoped lang="scss">
@@ -96,18 +125,16 @@ $color: #436eff;
 
   .navtitle {
     color: $color;
-    padding-left: 50px;
   }
 
   ul {
     display: flex;
     justify-content: center; /* 水平居中对齐 */
     align-items: center; /* 垂直居中对齐 */
-    margin-right: 400px; /* 修改为固定像素值 */
     .active {
       background-color: #e0e0e0; /* 鼠标悬停时背景颜色变深 */
 
-      a {
+      span {
         color: $color; /* 鼠标悬停时字体变蓝色 */
       }
 
@@ -122,6 +149,8 @@ $color: #436eff;
       }
     }
     li {
+      flex-shrink: 0;
+      cursor: pointer;
       list-style: none;
       line-height: 50px;
       padding: 0 20px;
@@ -145,7 +174,7 @@ $color: #436eff;
       //   }
       // }
 
-      a {
+      span {
         text-decoration: none;
         color: black;
         font-size: 14px;
@@ -204,18 +233,6 @@ $color: #436eff;
         opacity: 1;
       }
     }
-  }
-}
-
-@media (max-width: 1200px) {
-  ul {
-    margin-right: 200px; /* 在适当的媒体查询下修改margin-right的值 */
-  }
-}
-
-@media (max-width: 768px) {
-  ul {
-    margin-right: 50px; /* 在更小的屏幕尺寸下再次修改margin-right的值 */
   }
 }
 </style>

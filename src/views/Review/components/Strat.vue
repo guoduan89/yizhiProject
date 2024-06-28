@@ -7,12 +7,17 @@ export default {
 <script setup lang="js">
 import { ref, onMounted } from 'vue';
 import PromiseLetter from '../components/PromiseLetter.vue'
+import {  useRouter } from 'vue-router';
 
+
+const router = useRouter();
 const showPromiseLetter = ref(true)
 const handleAgree = () =>{
     showPromiseLetter.value = false
 }
-
+const handleDisagree = ()=>{
+    router.push('/')
+}
 const cityList = ref([
     {value: 'all', label: '全部'},
     {value: 'rated', label: '未评分'},

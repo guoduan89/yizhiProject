@@ -6,15 +6,21 @@ export default {
 
 <script setup lang="jsx">
 import { ref, toRefs, computed, watch, onMounted } from 'vue';
+import {useRouter} from 'vue-router';
 
 onMounted(async () => {});
+
+const router = useRouter()
+const getFill = () => {
+  router.push('/signUpWork/Fill');
+};
 </script>
 
 <template>
   <div class="banner">
     <img src="../../assets/img/PC端_slices/组 2.png" alt=""/>
     <div class="title">2023某市职业学校教学能力大赛</div>
-    <div class="sign-up">我要报名<img src="../../assets/img/PC端_slices/矢量智能对象 拷贝@2x.png" alt=""/></div>
+    <div class="sign-up" @click="getFill">我要报名<img src="../../assets/img/PC端_slices/矢量智能对象 拷贝@2x.png" alt=""/></div>
   </div>
 
     <div class="body">
@@ -227,6 +233,8 @@ body{
     display: flex;
     align-items: center;
     justify-items: center;
+    cursor: pointer;
+    
     img{
       margin-left: 5px;
       height: 16px;
