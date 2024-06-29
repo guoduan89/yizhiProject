@@ -1,19 +1,17 @@
 const routerMap = [
-  {
-    path: '/',
-    children: [
+
       {
-        path: '',
+        path: '/',
         name: 'home',
         component:import('@/views/Home/index.vue'),
       },
       {
-        path: 'guide',
+        path: '/guide',
         name: 'guide',
         component:import('@/views/Guide/index.vue'),
       },
       {
-        path: 'signUpWork',
+        path: '/signUpWork',
         name: 'signUpWork',
         component:import('@/views/signUpWork/index.vue'),
         children: [
@@ -27,10 +25,15 @@ const routerMap = [
             name: 'Upload',
             component:import('@/views/signUpWork/components/Upload.vue'),
           },
+          {
+            path: '111',
+            name: '111',
+            component:import('@/views/signUpWork/components/111.vue'),
+          },
         ],
       },
       {
-        path: 'Review',
+        path: '/Review',
         name: 'Review',
         component:  import('@/views/Review/index.vue'),
         children: [
@@ -46,8 +49,8 @@ const routerMap = [
           },
         ],
       },
-    ],
-  },
+    
+  
 ];
 
 export { routerMap };

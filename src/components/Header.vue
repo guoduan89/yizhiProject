@@ -12,23 +12,23 @@ const isShowDialogLogin = ref(false);
 const isChangePassword = ref(false);
 
 const { userData, logout } = toRefs(useUserStore());
-const router = useRouter();
+// const router = useRouter();
 
 
 
-const activeTab = ref('home'); // 默认选中的标签
-const selectTab = (tab) => {
-  activeTab.value = tab;
-  if (tab === 'home') {
-    router.push({ name: 'home' });
-  } else if (tab === 'guide') {
-    router.push({ name: 'guide' });
-  } else if (tab === 'fill') {
-    router.push('/signUpWork/Fill');
-  }else if (tab === 'review') {
-    router.push('/Review');
-  }
-};
+// const activeTab = ref('home'); // 默认选中的标签
+// const selectTab = (tab) => {
+//   activeTab.value = tab;
+//   if (tab === 'home') {
+//     router.push({ name: 'home' });
+//   } else if (tab === 'guide') {
+//     router.push({ name: 'guide' });
+//   } else if (tab === 'fill') {
+//     router.push('/signUpWork/Fill');
+//   }else if (tab === 'review') {
+//     router.push('/Review');
+//   }
+// };
 
 
 onMounted(async () => {
@@ -41,18 +41,18 @@ onMounted(async () => {
     <div class="flex items-center gap-x-22">
       <div class="navtitle flex-shrink-0">某市职业学校教学能力大赛</div>
       <ul id="list">
-        <li class="nav-li" @click="selectTab('home')" :class="{ active: activeTab === 'home' }">
+        <RouterLink to='/' active-class="active" class="nav-li">
           <span class="nav-item">首页</span>
-        </li>
-        <li class="nav-li" @click="selectTab('guide')" :class="{ active: activeTab === 'guide' }">
+        </RouterLink>
+        <RouterLink to="/guide" active-class="active" class="nav-li">
           <span class="nav-item">比赛指南</span>
-        </li>
-        <li class="nav-li" @click="selectTab('fill')" :class="{ active: activeTab === 'fill' }">
+        </RouterLink>
+        <RouterLink  to="/signUpWork/Fill" active-class="active" class="nav-li">
           <span class="nav-item">我要报名</span>
-        </li>
-        <li class="nav-li" @click="selectTab('review')" :class="{ active: activeTab === 'review' }">
+        </RouterLink>
+        <RouterLink to="/Review" active-class="active" class="nav-li">
           <span class="nav-item">进入专家评审</span>
-        </li>
+        </RouterLink>
       </ul>
     </div>
 
@@ -217,15 +217,17 @@ $color: #436eff;
         width: 120px;
         top: 100%;
         z-index: 3;
-        left: -50px;
+        left: -24px;
         background-color: white;
         padding-left: 0;
         font-size: 14px;
         opacity: 0;
+        border-radius: 4%;
         .dropdown-item {
           display: flex;
           justify-content: center;
           align-items: center;
+          height: 50px
         }
       }
       &:hover .dropdown {
