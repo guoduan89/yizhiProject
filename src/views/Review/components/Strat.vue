@@ -24,37 +24,37 @@ const cityList = ref([
     {value: 'unrated', label: '已评分'},
 ]);
 const model = ref('');
-const columns = ref([
-                    {
-                        title: '序号',
-                        key: 'number'
-                    },
-                    {
-                        title: '作品名称',
-                        key: 'name'
-                    },
-                    {
-                        title: '提交时间',
-                        key: 'time'
-                    },
-                    {
-                        title: '得分',
-                        key: 'score'
-                    },
-                    {
-                        title:'操作',
-                        key:'operate',
-                    },
-                ]);
-const data = ref([
-                {
-                    number:1,
-                    name:"gggggg",
-                    time:'xxxx-xx-xx',
-                    score:100,
-                    operate:"操作"
-                },
-                ])
+// const columns = ref([
+//                     {
+//                         title: '序号',
+//                         key: 'number'
+//                     },
+//                     {
+//                         title: '作品名称',
+//                         key: 'name'
+//                     },
+//                     {
+//                         title: '提交时间',
+//                         key: 'time'
+//                     },
+//                     {
+//                         title: '得分',
+//                         key: 'score'
+//                     },
+//                     {
+//                         title:'操作',
+//                         key:'operate',
+//                     },
+//                 ]);
+// const data = ref([
+//                 {
+//                     number:1,
+//                     name:"gggggg",
+//                     time:'xxxx-xx-xx',
+//                     score:100,
+//                     operate:"操作"
+//                 },
+//                 ])
 
 
 
@@ -66,7 +66,7 @@ onMounted(async () => {
 <template>
     <div class="content">
         <div class="banner">
-            <img src="../../assets/img/PC端_slices/组 2 拷贝@2x.png" alt=""/>
+            <img src="../../../assets/img/PC端_slices/组 2 拷贝@2x.png" alt=""/>
             <div class="title">专家评审您好！</div>
             <div class="desc">您评审的分类为：xxxx</div>
         </div>
@@ -79,7 +79,23 @@ onMounted(async () => {
             </Select>
             
         </div>
-        <Table :columns="columns" :data="data"/>
+        <!-- <Table :columns="columns" :data="data"/> -->
+        <table>
+            <tr class="tb-title">
+                <th>序列</th>
+                <th>作品名称</th>
+                <th>提交时间</th>
+                <th>得分</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>我叫XXX</td>
+                <td>XXXX-XX-XX</td>
+                <td>得分</td>
+                <td>评分</td>
+            </tr>
+        </table>
         <div class="page"><Page :total="20" show-elevator show-total style="left:0px" /></div>
         
     </div>
@@ -89,7 +105,7 @@ onMounted(async () => {
 <style scoped lang="css">
     .content{
         width:  95%;
-        height: 100%;
+        height: 600px;
         background-color: white;
         margin: 1px auto;
         padding: 20px;
@@ -130,6 +146,22 @@ onMounted(async () => {
             display: flex;
             justify-content: flex-end;
             margin-top: 20px;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            .tb-title{
+                height: 45px;
+                width: 100%;
+                background-color:#e8e9ee;
+            }
+            tr{
+                td{
+                    text-align: center;
+                    height: 40px;
+                    border-bottom: 1px solid #e8e9ee;
+                }
+            }
         }
     }
 </style>
