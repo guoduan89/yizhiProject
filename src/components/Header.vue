@@ -47,7 +47,7 @@ onMounted(async () => {
         <RouterLink to="/guide" active-class="active" class="nav-li">
           <span class="nav-item">比赛指南</span>
         </RouterLink>
-        <RouterLink  to="/signUpWork/Fill" active-class="active" class="nav-li">
+        <RouterLink  to="/signUpWork" active-class="active" class="nav-li">
           <span class="nav-item">我要报名</span>
         </RouterLink>
         <RouterLink to="/Review" active-class="active" class="nav-li">

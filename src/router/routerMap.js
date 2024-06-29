@@ -16,16 +16,6 @@ const routerMap = [
         component:import('@/views/signUpWork/index.vue'),
         children: [
           {
-            path: 'Fill',
-            name: 'Fill',
-            component:import('@/views/signUpWork/components/Fill.vue'),
-          },
-          {
-            path: 'Upload',
-            name: 'Upload',
-            component:import('@/views/signUpWork/components/Upload.vue'),
-          },
-          {
             path: '111',
             name: '111',
             component:import('@/views/signUpWork/components/111.vue'),
