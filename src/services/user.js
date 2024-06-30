@@ -11,4 +11,8 @@ export const userServices = {
   async changeInfo(data) {
     return http.post('/biz/user/edit', data);
   },
+  //
+  async getListInfo(data){
+    return http.post('/biz/user/list',data);
+  }
 }

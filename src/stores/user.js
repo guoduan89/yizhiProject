@@ -11,7 +11,6 @@ export const useUserStore = defineStore('user', () => {
     const data = await userServices.getInfo();
     console.log(`updateUserInfo: `, data);
     if(data.code !== 200) return;
-
     // 更新用户信息
     userData.value = data.user;
     userRoles.value = data.roles;
@@ -28,34 +27,32 @@ export const useUserStore = defineStore('user', () => {
   }
 
   async function change(data){
-    // Object.assign(userData.value, data)
-    
-
+    Object.assign(userData.value, data)
       await userServices.changeInfo(
       {
-        userId: 668,
-        userType: 1,
-        readFlag: 0,
-        nickName: "胡志薇",
-        schoolName: "⻘岛恒星学院",
-        sysUser:{
-          userId: 668,
-          userName: "hzw_9527",
-          password:data,
-        }
-        }
-    //   {
-    //   userId: userDsUser.value.userId,
-    //   userType: userDsUser.value.userType,
-    //   readFlag: userDsUser.value.readFlag,
-    //   nickName: userDsUser.value.nickName,
-    //   schoolName: userDsUser.value.schoolName,
-    //   sysUser: {
-    //     userId: userData.value.sysUser.userId,
-    //     userName: userData.value.sysUser.userName,
-    //     password: userData.value.sysUser.password,
-    //   },
-    // }
+      userId: userDsUser.value.userId,
+      userType: userDsUser.value.userType,
+      readFlag: userDsUser.value.readFlag,
+      nickName: userDsUser.value.nickName,
+      schoolName: userDsUser.value.schoolName,
+      sysUser: {
+        userId: userData.value.userId,
+        userName: userData.value.userName,
+        password: userData.value.password,
+      },
+    }
+    // {
+    //   userId: 668,
+    //   userType: 1,
+    //   readFlag: 0,
+    //   nickName: "胡志薇",
+    //   schoolName: "⻘岛恒星学院",
+    //   sysUser:{
+    //     userId: 668,
+    //     userName: "hzw_9527",
+    //     password:data,
+    //   }
+    //   }
   )
   }
 

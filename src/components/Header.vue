@@ -13,14 +13,20 @@ const isChangePassword = ref(false);
 
 const { userData, logout } = toRefs(useUserStore());
 
-
-
+async function test(){
+  const data = await userServices.getListInfo({
+  
+},
+)
+console.log('getListInfo',data)
+}
 onMounted(async () => {
   
 });
 </script>
 
 <template>
+  <button @click="test">test</button>
   <div class="nav px-200">
     <div class="flex items-center gap-x-22">
       <div class="nav-title flex-shrink-0">某市职业学校教学能力大赛</div>

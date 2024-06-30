@@ -53,14 +53,8 @@ async function changeHandle() {
     Message.error('两次输入密码不一致');
     return;
   }
-  
-  // const { code } = await userStore.change(loginFormData.value.newPassword1)
-  // if (code === 200) {
-  //   // userStore.updateUserInfo();
-  //   Message.success('修改成功');
-  //   close();
-  // }
-  await userStore.change(loginFormData.value.newPassword1)
+
+  await userStore.change({password:loginFormData.value.newPassword1})
   Message.success('修改成功');
   close();
 }
