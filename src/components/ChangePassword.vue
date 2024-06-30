@@ -40,32 +40,31 @@ const loginFormRules = ref({
 async function close() {
   visible.value = false;
 }
+
 const userStore = useUserStore();
+const { userData } = toRefs(useUserStore());
+
 async function changeHandle() {
-    const res = await fromRef.value?.validate();
-    if(userData.userData.password!==loginFormData.value.password){
-      Message.success('密码不正确');
-      return
-    }
-    if(newPassword1!==newPassword2){
-      Message.success('请确认两次新密码相同');
-      return
-    }
-    if (res) {
-      const res = await userStore.changePassword();
-      if (res) {
-        const { code, msg, token } =1
-      if (code === 200) {
-        userStore.updateUserInfo()
-        localStorage.setItem('token', token);
-        Message.success('登录成功');
-        close();
-      } else {
-        Message.error(msg);
-      }
-    }
+  // if(loginFormData.value.password !== userData.value.password){
+  //   Message.error('密码错误');
+  //   return;
+  // }
+  if(loginFormData.value.newPassword1 !== loginFormData.value.newPassword2){
+    Message.error('两次输入密码不一致');
+    return;
   }
+  
+  // const { code } = await userStore.change(loginFormData.value.newPassword1)
+  // if (code === 200) {
+  //   // userStore.updateUserInfo();
+  //   Message.success('修改成功');
+  //   close();
+  // }
+  await userStore.change(loginFormData.value.newPassword1)
+  Message.success('修改成功');
+  close();
 }
+
 
 const visibleChange = (val) => {
   visible.value = val;
@@ -74,11 +73,12 @@ const visibleChange = (val) => {
     loginFormData.value = {
       password: '',
       newPassword1: '',
-      newPassword2,
+      newPassword2: '',
     };
     fromRef.value?.resetFields();
   }
 };
+
 
 console.log(`$attrs: `, useAttrs());
 
@@ -95,7 +95,7 @@ onMounted(async () => {});
         <FormItem label="新密码" prop="newPassword1">
             <Input v-model="loginFormData.newPassword1" type="password" password placeholder="请输入新密码" />
         </FormItem>
-        <FormItem label="新密码" prop="newPassword2">
+        <FormItem label="确认密码" prop="newPassword2">
             <Input v-model="loginFormData.newPassword2" type="password" password placeholder="请再次输入新密码" />
         </FormItem>
     </Form>

@@ -8,7 +8,7 @@ export const userServices = {
   async getInfo() {
     return http.get('/getInfo');
   },
-  async changePassword(data) {
+  async changeInfo(data) {
     return http.post('/biz/user/edit', data);
   },
 }

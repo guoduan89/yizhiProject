@@ -12,34 +12,18 @@ const isShowDialogLogin = ref(false);
 const isChangePassword = ref(false);
 
 const { userData, logout } = toRefs(useUserStore());
-// const router = useRouter();
 
-
-
-// const activeTab = ref('home'); // 默认选中的标签
-// const selectTab = (tab) => {
-//   activeTab.value = tab;
-//   if (tab === 'home') {
-//     router.push({ name: 'home' });
-//   } else if (tab === 'guide') {
-//     router.push({ name: 'guide' });
-//   } else if (tab === 'fill') {
-//     router.push('/signUpWork/Fill');
-//   }else if (tab === 'review') {
-//     router.push('/Review');
-//   }
-// };
 
 
 onMounted(async () => {
-  // getBody();
+  
 });
 </script>
 
 <template>
   <div class="nav px-200">
     <div class="flex items-center gap-x-22">
-      <div class="navtitle flex-shrink-0">某市职业学校教学能力大赛</div>
+      <div class="nav-title flex-shrink-0">某市职业学校教学能力大赛</div>
       <ul id="list">
         <RouterLink to='/' active-class="active" class="nav-li">
           <span class="nav-item">首页</span>
@@ -64,8 +48,8 @@ onMounted(async () => {
           <li class="dropdown-item">
             <img src="../assets/img/PC端_slices/矢量智能对象@2x(3).png" alt="" /><div @click="logout">退出登录</div>
           </li>
-          <li class="dropdown-item" @click="() => {isChangePassword = true;}">
-            <img src="../assets/img/PC端_slices/矢量智能对象@2x(4).png" alt="" />修改密码
+          <li class="dropdown-item">
+            <img src="../assets/img/PC端_slices/矢量智能对象@2x(4).png" alt="" /><div @click="()=>{isChangePassword=true}">修改密码</div>
           </li>
         </ul>
       </div>
@@ -122,7 +106,7 @@ $color: #436eff;
   height: 50px;
   // background-color: bisque;
 
-  .navtitle {
+  .nav-title {
     color: $color;
   }
 

@@ -19,20 +19,45 @@ export const useUserStore = defineStore('user', () => {
     userDsUser.value = data.dsUser;
   }
 
-  async function changeUserInfo({}) {
-    const data = await userServices.changeInfo({});
-    console.log(`changeUserInfo: `, data);
-    if(data.code !== 200) return;
-  }
-
   async function logout() {
     userData.value = null
     userRoles.value = null;
     userPermissions.value = null;
-
+    userDsUser.value = null;
     localStorage.removeItem('token')
   }
 
+  async function change(data){
+    // Object.assign(userData.value, data)
+    
 
-  return {userData, userRoles, userPermissions, updateUserInfo ,changeUserInfo,logout};
+      await userServices.changeInfo(
+      {
+        userId: 668,
+        userType: 1,
+        readFlag: 0,
+        nickName: "胡志薇",
+        schoolName: "⻘岛恒星学院",
+        sysUser:{
+          userId: 668,
+          userName: "hzw_9527",
+          password:data,
+        }
+        }
+    //   {
+    //   userId: userDsUser.value.userId,
+    //   userType: userDsUser.value.userType,
+    //   readFlag: userDsUser.value.readFlag,
+    //   nickName: userDsUser.value.nickName,
+    //   schoolName: userDsUser.value.schoolName,
+    //   sysUser: {
+    //     userId: userData.value.sysUser.userId,
+    //     userName: userData.value.sysUser.userName,
+    //     password: userData.value.sysUser.password,
+    //   },
+    // }
+  )
+  }
+
+  return {userData, userRoles, userPermissions, updateUserInfo ,logout,change};
 });
