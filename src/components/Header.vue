@@ -11,13 +11,10 @@ import ChangePassword from './ChangePassword.vue';
 const isShowDialogLogin = ref(false);
 const isChangePassword = ref(false);
 
-const { userData, logout } = toRefs(useUserStore());
+const { userData, logout, userDsUser} = toRefs(useUserStore());
 
 async function test(){
-  const data = await userServices.getListInfo({
-  
-},
-)
+
 console.log('getListInfo',data)
 }
 onMounted(async () => {
@@ -26,7 +23,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <button @click="test">test</button>
+  <!-- <button @click="test">test</button> -->
   <div class="nav px-200">
     <div class="flex items-center gap-x-22">
       <div class="nav-title flex-shrink-0">某市职业学校教学能力大赛</div>
@@ -37,12 +34,23 @@ onMounted(async () => {
         <RouterLink to="/guide" active-class="active" class="nav-li">
           <span class="nav-item">比赛指南</span>
         </RouterLink>
-        <RouterLink  to="/signUpWork" active-class="active" class="nav-li">
+        <RouterLink v-if="userDsUser?.userType===1" to="/signUpWork" active-class="active" class="nav-li">
+          <span class="nav-item">我要报名</span>
+        </RouterLink>
+        <RouterLink v-else-if="userDsUser?.userType===2" to="/Review" active-class="active" class="nav-li">
+          <span class="nav-item">进入专家评审</span>
+        </RouterLink>
+        
+        <template v-else>
+          <RouterLink to="/signUpWork" active-class="active" class="nav-li">
           <span class="nav-item">我要报名</span>
         </RouterLink>
         <RouterLink to="/Review" active-class="active" class="nav-li">
           <span class="nav-item">进入专家评审</span>
         </RouterLink>
+        {{ userDsUser?.userType }}
+        </template>
+        
       </ul>
     </div>
 

@@ -56,5 +56,5 @@ export const useUserStore = defineStore('user', () => {
   )
   }
 
-  return {userData, userRoles, userPermissions, updateUserInfo ,logout,change};
+  return {userData, userRoles, userPermissions,userDsUser, updateUserInfo ,logout,change};
 });

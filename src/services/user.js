@@ -14,5 +14,6 @@ export const userServices = {
   //
   async getListInfo(data){
     return http.post('/biz/user/list',data);
-  }
+  },
+
 }

@@ -1,5 +1,9 @@
 const routerMap = [
-
+      {
+        path: '/aaa',
+        name: 'aaa',
+        component:import('@/views/signUpWork/components/aaa.vue'),
+      },
       {
         path: '/',
         name: 'home',
@@ -14,13 +18,6 @@ const routerMap = [
         path: '/signUpWork',
         name: 'signUpWork',
         component:import('@/views/signUpWork/index.vue'),
-        children: [
-          {
-            path: '111',
-            name: '111',
-            component:import('@/views/signUpWork/components/111.vue'),
-          },
-        ],
       },
       {
         path: '/Review',

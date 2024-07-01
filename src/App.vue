@@ -4,6 +4,8 @@ import { RouterView } from 'vue-router';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 
+
+
 const userStore = useUserStore()
 onMounted(() => {
   userStore.updateUserInfo()
@@ -16,6 +18,8 @@ onMounted(() => {
       <RouterView />
     </div>
   <Footer />
+
+
 </template>
 
 <style scoped>
